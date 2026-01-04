@@ -1,130 +1,82 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aniversariantes INCBR</title>
-    <style>
-        /* Reset simples */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            background-color: #f9f9f9;
-            color: #333;
-        }
-
-        header {
-            background-color: #ff4c4c;
-            padding: 20px 0;
-            text-align: center;
-            color: white;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        header img {
-            width: 100px; /* Ajusta a logo */
-            height: 100px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-        }
-
-        nav {
-            margin-top: 10px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        main {
-            padding: 40px 20px;
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        section {
-            margin-bottom: 50px;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #ff4c4c;
-        }
-
-        p {
-            font-size: 1.1em;
-            line-height: 1.6;
-        }
-
-        footer {
-            background-color: #222;
-            color: #fff;
-            text-align: center;
-            padding: 20px 10px;
-        }
-
-        /* Responsividade */
-        @media (max-width: 600px) {
-            nav a {
-                display: block;
-                margin: 5px 0;
-            }
-
-            header img {
-                width: 80px;
-                height: 80px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aniversariantes INCBr</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-blue-100 min-h-screen font-sans text-black">
 
-<header>
-    <img src="logo.png" alt="Logo INCBR">
-    <h2>Aniversariantes INCBR</h2>
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#sobre">Sobre</a>
-        <a href="#contato">Contato</a>
-    </nav>
-</header>
+  <!-- Header -->
+  <header class="bg-blue-700 text-white shadow-md p-6 text-center">
+    <img src="img/logo.png" alt="Logo Aniversariantes INCBr" class="mx-auto mb-4 w-32 h-32 object-contain">
+    <h1 class="text-3xl font-bold">Aniversariantes INCBr</h1>
+    <p class="mt-1 text-lg opacity-90">Celebre os aniversários e casamentos!</p>
+  </header>
 
-<main>
-    <section id="home">
-        <h1>Bem-vindo!</h1>
-        <p>Este é o site dos aniversariantes do INCBR. Aqui você encontra todas as informações sobre celebrações, aniversários e datas especiais de nossos membros.</p>
-    </section>
+  <!-- Navigation Tabs -->
+  <nav class="bg-white shadow sticky top-0 z-50">
+    <ul class="flex overflow-x-auto">
+      <li><button onclick="showTab('destaque')" class="tab-btn active">Destaque do Mês</button></li>
+      <li><button onclick="showTab('adultos')" class="tab-btn">Adultos</button></li>
+      <li><button onclick="showTab('jovens')" class="tab-btn">Jovens</button></li>
+      <li><button onclick="showTab('criancas')" class="tab-btn">Crianças</button></li>
+      <li><button onclick="showTab('casamentos')" class="tab-btn">Casamentos</button></li>
+      <li><button onclick="showTab('adicionar')" class="tab-btn">Adicionar</button></li>
+    </ul>
+  </nav>
 
-    <section id="sobre">
-        <h1>Sobre</h1>
-        <p>O site foi criado para homenagear cada aniversariante da nossa comunidade. Nosso objetivo é celebrar cada vida e fortalecer nossa união como família INCBR.</p>
-    </section>
+  <!-- Content -->
+  <main class="max-w-6xl mx-auto p-6">
+    <div id="destaque" class="tab-content">
+      <h2 class="text-2xl font-bold mb-4">Destaque do Mês</h2>
+      <div id="lista-destaque" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+      <p id="vazio-destaque" class="text-center text-gray-500 hidden">Nenhum aniversariante este mês</p>
+    </div>
 
-    <section id="contato">
-        <h1>Contato</h1>
-        <p>Tem sugestões ou quer enviar mensagens para os aniversariantes? Entre em contato conosco pelo e-mail: <strong>contato@incbr.com.br</strong></p>
-    </section>
-</main>
+    <div id="adultos" class="tab-content hidden">
+      <h2 class="text-2xl font-bold mb-4">Adultos (18+ anos)</h2>
+      <div id="lista-adultos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+      <p id="vazio-adultos" class="text-center text-gray-500 hidden">Nenhum adulto cadastrado</p>
+    </div>
 
-<footer>
-    <p>&copy; 2026 INCBR. Todos os direitos reservados.</p>
-</footer>
+    <div id="jovens" class="tab-content hidden">
+      <h2 class="text-2xl font-bold mb-4">Jovens (13-17 anos)</h2>
+      <div id="lista-jovens" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+      <p id="vazio-jovens" class="text-center text-gray-500 hidden">Nenhum jovem cadastrado</p>
+    </div>
 
+    <div id="criancas" class="tab-content hidden">
+      <h2 class="text-2xl font-bold mb-4">Crianças (0-12 anos)</h2>
+      <div id="lista-criancas" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+      <p id="vazio-criancas" class="text-center text-gray-500 hidden">Nenhuma criança cadastrada</p>
+    </div>
+
+    <div id="casamentos" class="tab-content hidden">
+      <h2 class="text-2xl font-bold mb-4">Casamentos</h2>
+      <div id="lista-casamentos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+      <p id="vazio-casamentos" class="text-center text-gray-500 hidden">Nenhum casamento cadastrado</p>
+    </div>
+
+    <div id="adicionar" class="tab-content hidden">
+      <h2 class="text-2xl font-bold mb-4">Adicionar Novo Registro</h2>
+      <form id="form-adicionar" class="space-y-4">
+        <input type="text" id="nome" placeholder="Nome completo" class="w-full p-3 border border-black rounded" required>
+        <input type="date" id="data" class="w-full p-3 border border-black rounded" required>
+        <select id="categoria" class="w-full p-3 border border-black rounded" required>
+          <option value="">Selecione a categoria</option>
+          <option value="adultos">Adulto (18+)</option>
+          <option value="jovens">Jovem (13-17)</option>
+          <option value="criancas">Criança (0-12)</option>
+          <option value="casamentos">Casamento</option>
+        </select>
+        <button type="submit" class="bg-blue-700 text-white py-3 px-6 rounded hover:bg-blue-800">Salvar</button>
+      </form>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
