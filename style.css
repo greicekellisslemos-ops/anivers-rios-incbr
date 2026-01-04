@@ -1,0 +1,25 @@
+.tab-btn {
+  flex: 1;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s;
+  cursor: pointer;
+  color: black;
+  background: white;
+}
+.tab-btn.active {
+  border-bottom-color: #1D4ED8; /* Azul */
+  color: #1D4ED8;
+}
+.tab-content {
+  animation: fadeIn 0.3s ease;
+}
+.tab-content .bg-white {
+  background-color: white;
+  color: black;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px);}
+  to { opacity: 1; transform: translateY(0);}
+}
